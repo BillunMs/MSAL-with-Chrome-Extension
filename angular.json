@@ -21,7 +21,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ],
             "styles": [
               "src/styles.css"
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "microsoft-login"
+    }
+  },
+  "defaultProject": "microsoft-login",
+  "cli": {
+    "analytics": false
+  }
 }

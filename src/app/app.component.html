@@ -1,15 +1,16 @@
 <table>
   <tr>
-    <td><a [routerLink]="['/public-page']" routerLinkActive="true">[PUBLIC-PAGE]</a></td>
-    <td><a [routerLink]="['/restricted-page']" routerLinkActive="true" *ngIf="isLoggedIn()">[RESTRICTED-PAGE]</a></td>
     <td><button (click)="login()" *ngIf="!isLoggedIn()">SIGN IN</button></td>
     <td><button (click)="logout()" *ngIf="isLoggedIn()">SIGN OUT</button></td>
   </tr>
 </table>
 <div *ngIf="isLoggedIn()">
   <h3>You are logged in</h3>
+  <button (click)="callProfile()">get profile</button>
+  <div>{{resp}}</div>
+  <button (click)="set()">SET</button>
+  <button (click)="reset()">RESET</button>
 </div>
 <div *ngIf="!isLoggedIn()">
   <h3>You are NOT logged in</h3>
 </div>
-<router-outlet></router-outlet>
