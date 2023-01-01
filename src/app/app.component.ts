@@ -41,19 +41,7 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.logout()
   }
-  
-  callProfile(){
-    this.http.get('https://graph.microsoft.com/v1.0/me').subscribe(res=>{console.log('reasdsadasp',res)
-    this.resp=res
-    return res
-    })
-  }
 
-  getCategories(){
-    this.msEmailService.getCategories().then(resp=>{
-      console.log(resp,'resp')
-    }).catch(err=>{console.log(err,'err')})
-  }
 
   async set(){
     await this.msEmailService.setCategoriesByEmails()
