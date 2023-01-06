@@ -4,10 +4,9 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
 } from '@angular/common/http';
 import { Observable ,timer, throwError, of} from 'rxjs';
-import { retryWhen,mergeMap,tap} from 'rxjs/operators';
+import { retryWhen,mergeMap} from 'rxjs/operators';
 
 @Injectable()
 export class RetryInterceptor implements HttpInterceptor {
