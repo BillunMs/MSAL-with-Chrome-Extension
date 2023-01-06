@@ -3,6 +3,7 @@
   "name": "Billun angular",
   "version": "2.1",
   "description": "Application de controle de validation de l'url des sites.",
+  
   "content_scripts": [
     {
       "matches": [ "http://*.gmail.com/*", "http://mail.google.com/*", "https://*.gmail.com/*", "https://mail.google.com/*" ],
