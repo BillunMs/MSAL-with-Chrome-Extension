@@ -14,7 +14,7 @@
   "start" : "node server.js",
   "engines": { "node": "16.15.0", "npm": "8.12.1" },
   "private": true,
-  "heroku-postbuild": "ng build —prod",
+  "heroku-postbuild": "ng build",
   "dependencies": {
     "@angular/animations": "~10.1.6",
     "@angular/common": "~10.1.6",
