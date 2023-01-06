@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "heroku-postbuild": "ng build"
   },
-  "engines":{"node":"16.15.0","npm":"8.12.1"},
+  "engines":{"node":"10.13.0","npm":"6.11.0"},
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.6",
