@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build —prod"
+    "heroku-postbuild": "ng build"
   },
   "start" : "node server.js",
   "engines": { "node": "16.15.0", "npm": "8.12.1" },
