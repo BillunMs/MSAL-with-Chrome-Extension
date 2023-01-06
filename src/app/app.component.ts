@@ -4,6 +4,7 @@ import { MsalService } from '@azure/msal-angular';
 import { Component, OnInit } from '@angular/core';
 import { MsEmailService } from './ms-email.service';
 import { HttpClient } from '@angular/common/http';
+import { BillunService } from './billun.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,12 @@ export class AppComponent implements OnInit {
   public checker=null;
   public resp=null;
 
-  constructor(private authService: MsalService,private msEmailService:MsEmailService,private http:HttpClient) {
+  public signal='';
+  
+  constructor(private authService: MsalService,private msEmailService:MsEmailService,private http:HttpClient,private billun:BillunService) {
 
   }
+
   ngOnInit(): void {
     this.authService.instance.handleRedirectPromise().then( res => {
       if (res != null && res.account != null) {
@@ -48,5 +52,13 @@ export class AppComponent implements OnInit {
   }
   async reset(){
     await this.msEmailService.resetCategoriesByEmails()
+  }
+
+  async sendSignal(){
+    if(this.signal===''){
+      alert('Donner le nom de site ou email')
+      return
+    }
+    await this.billun.send(this.signal).then(()=>{this.signal=''})
   }
 }

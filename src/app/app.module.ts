@@ -8,11 +8,14 @@ import { AppComponent } from './app.component';
 import { PublicPageComponent } from './public-page/public-page.component';
 import { RestrictedPageComponent } from './restricted-page/restricted-page.component';
 
+import { FormsModule } from '@angular/forms';
+import { RetryInterceptor } from './core/interceptors/retry.interceptor';
+
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       clientId: 'e986f0aa-665a-44f8-a0c4-32bf87cd31ec',//d6d9e658-99cb-41c4-83c8-8c20974b47a4 //10fded60-16d8-4c7e-aa87-946e96bb69e1
-      redirectUri: 'http://localhost:4200'
+      redirectUri: 'chrome-extension://dkgendnilbddeonpljnopkmilbanmbfi/index.html'
     }
   });
 }
@@ -37,7 +40,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   ],
   imports: [
     BrowserModule,
-    MsalModule,HttpClientModule
+    MsalModule,HttpClientModule,FormsModule
   ],
   providers: [
     {
@@ -56,7 +59,12 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
       provide: MSAL_INTERCEPTOR_CONFIG,
       useFactory: MSALInterceptorConfigFactory
     },  
-    MsalService
+    MsalService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:RetryInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

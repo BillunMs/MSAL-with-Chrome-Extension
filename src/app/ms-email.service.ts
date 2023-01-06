@@ -45,7 +45,7 @@ export class MsEmailService {
     })    
   }
 
-  fetchWrongEmails(){
+  async fetchWrongEmails(){
      return new Promise((resolve,reject)=>{
       this.http.get(this.emailList_API).subscribe(data=>{
         data!==undefined?resolve(data):reject(data)
@@ -61,7 +61,7 @@ export class MsEmailService {
      })   
   }
 
-  getCategories(){
+  async getCategories(){
     return new Promise((resolve,reject)=>{
       this.http.get(this.catalog_API).subscribe(data=>{
         var arr=[]
@@ -91,7 +91,7 @@ export class MsEmailService {
           return true
         }
       })
-     
+      console.log(redColor,'redColor')
       var greenColor=tempArr.filter((element:{displayName:string,color:string})=>{
         if(element.displayName==='Verifié' && element.color=='preset4'){
           return true
@@ -113,9 +113,10 @@ export class MsEmailService {
     })
   }
 
-  setCategorieByMessage(message:{idMessage:string,categories:Array<string>,sender:string},categorie:Array<string>){
+  async setCategorieByMessage(message:{idMessage:string,categories:Array<string>,sender:string},categorie:Array<string>){
     var idMessage=message.idMessage
     var categObject={categories:categorie}
+
     return new Promise((resolve,reject)=>{
       this.http.patch(this.messagesAPI_MS+'/'+idMessage,categObject).subscribe(data=>{
         data!==undefined?resolve(data):reject(data)
@@ -129,7 +130,7 @@ export class MsEmailService {
     var emails=[]
     var messages=[]
     var promises=[]
-    
+
     var p1=this.initCategoriesStage()
     var p2=this.fetchWrongEmails().then(resp=>{emails=resp as []})
     var p3=this.fetchMSMessages().then(resp=>{messages=resp as []})
@@ -141,26 +142,25 @@ export class MsEmailService {
       hashMap[email]=true
     })
 
-
-
     messages.forEach((message:{idMessage:string,sender:string,categories:Array<string>})=>{
       console.log('message ',message)
       var tempArr=message.categories.map(element=>{
         return element
       })
       var prom=null
-      if(hashMap[message.sender]!==undefined){
+      let hasRedOrGreenCategorie=message.categories.filter(element=>{if(element==='Verifié'||element==='Non verifié') return true}).length>=1
+
+      if(hashMap[message.sender]!==undefined && !hasRedOrGreenCategorie){
         tempArr.push('Verifié')
         prom=this.setCategorieByMessage(message,tempArr)
       }
-      else{
+      //Have to verify does message already have red or green categorie so we dont need to push usseles promises
+      else if(hashMap[message.sender]===undefined && !hasRedOrGreenCategorie){
         tempArr.push('Non verifié')
         prom=this.setCategorieByMessage(message,tempArr)
       }
-      console.log('my message',message)
       promises.push(prom)
     })
-    
     return Promise.all(promises)
   }
 
