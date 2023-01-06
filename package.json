@@ -7,14 +7,13 @@
     "build": "ng build",
     "test": "ng test",
     "watch": "ng build --watch --configuration development",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --configuration production"
+    "heroku-postbuild": "ng build"
   },
   "engines": {
     "node": "16.15.0",
     "npm": "8.12.1"
   },
+  "heroku-postbuild": "ng build",
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.6",
