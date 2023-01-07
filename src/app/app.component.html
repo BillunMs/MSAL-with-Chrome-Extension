@@ -21,7 +21,7 @@
                             class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                             Signaler
                         </button>
-                        <button style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="loginNotInPopUp()" *ngIf="!isLoggedIn()">Se connecter avec Outlook</button>
+                        <button style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="login()" *ngIf="!isLoggedIn()">Se connecter avec Outlook</button>
                         <button  class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="logout()" *ngIf="isLoggedIn()">Deconnecter</button>
                     </div>
                     <div *ngIf="isLoggedIn()" class="vertical-center">
@@ -37,4 +37,18 @@
         </div>
 
     </div>
+
+  <!-- <div>
+    <h1>Micorsoft </h1>
+    <button (click)="login()" *ngIf="!isLoggedIn()">SIGN IN</button>
+    <button (click)="logout()" *ngIf="isLoggedIn()">SIGN OUT</button>
+    <div *ngIf="isLoggedIn()">
+      <h3>You are logged in</h3>
+      <button (click)="set()">SET</button>
+      <button (click)="reset()">RESET</button>
+    </div>
+    <div *ngIf="!isLoggedIn()">
+      <h3>You are NOT logged in</h3>
+    </div>
+  </div> -->
 </div>

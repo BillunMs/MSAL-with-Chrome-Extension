@@ -163,11 +163,12 @@ class AppComponent {
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            yield this.authService.instance.handleRedirectPromise().then(res => {
+            yield this.authService.instance.handleRedirectPromise().then((res) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                 if (res != null && res.account != null) {
                     this.authService.instance.setActiveAccount(res.account);
                 }
-            });
+                yield this.authService.loginRedirect();
+            }));
         });
     }
     isLoggedIn() {
@@ -175,7 +176,7 @@ class AppComponent {
     }
     loginNotInPopUp() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.authService.loginRedirect();
+            yield this.authService.loginRedirect();
         });
     }
     login() {
@@ -187,7 +188,9 @@ class AppComponent {
         });
     }
     logout() {
-        this.authService.logout();
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.authService.logout();
+        });
     }
     set() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -308,9 +311,9 @@ function MSALInstanceFactory() {
     return new _azure_msal_browser__WEBPACK_IMPORTED_MODULE_3__["PublicClientApplication"]({
         auth: {
             clientId: 'e986f0aa-665a-44f8-a0c4-32bf87cd31ec',
-            //redirectUri: 'chrome-extension://dkgendnilbddeonpljnopkmilbanmbfi/index.html'
+            redirectUri: 'chrome-extension://dkgendnilbddeonpljnopkmilbanmbfi/index.html'
             //redirectUri:'https://billunms.herokuapp.com/'
-            redirectUri: 'http://localhost:4200'
+            //redirectUri:'http://localhost:4200'
         }
     });
 }

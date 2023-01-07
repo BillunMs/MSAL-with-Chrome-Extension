@@ -24,8 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit() {
-    
-    await this.authService.instance.handleRedirectPromise().then( res => {
+    await this.authService.instance.handleRedirectPromise().then(  (res) => {
       if (res != null && res.account != null) {
         this.authService.instance.setActiveAccount(res.account)
       }
@@ -37,18 +36,20 @@ export class AppComponent implements OnInit {
   }
 
   async loginNotInPopUp(){
-    this.authService.loginRedirect()
+    await this.authService.loginRedirect()
   }
 
   async login() {
+    //window.open('https://billunms.herokuapp.com/', 'winname', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=350');
+
     this.authService.loginPopup()
       .subscribe((response: AuthenticationResult) => {
         this.authService.instance.setActiveAccount(response.account);        
       });
   }
   
-  logout() {
-    this.authService.logout()
+  async logout() {
+    await this.authService.logout()
   }
 
 
