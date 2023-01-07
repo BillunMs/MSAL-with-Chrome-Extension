@@ -23,10 +23,9 @@ export class MsEmailService {
 
   async fetchMSMessages(){
     return new Promise((resolve,reject)=>{
-      this.http.get(this.messagesAPI_MS).subscribe(data=>{
+      this.http.get(this.messagesAPI_MS+'?$top=1000').subscribe(data=>{
         var arrRet=[]
         var rawData=data['value']
-        console.log(rawData,'rawData messages')
         if(rawData===undefined){
           reject()
         }
@@ -68,7 +67,6 @@ export class MsEmailService {
         if(data===undefined){
           reject(data)
         }
-        console.log(data,'data')
         var rawData=data['value']
 
         rawData.forEach((element:{id:string;displayName:string,color:string}) => {
@@ -84,7 +82,7 @@ export class MsEmailService {
   }
 
   async initCategoriesStage(){
-    await this.getCategories().then(async resp=>{
+    await this.getCategories().then(async (resp)=>{
       var tempArr=resp as []
       var redColor=tempArr.filter((element:{displayName:string,color:string})=>{
         if(element.displayName==='Non verifié' && element.color=='preset0'){

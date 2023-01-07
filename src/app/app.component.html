@@ -1,4 +1,5 @@
 <div id="body">
+  
     <div
         class="relative bg-white px-6 pt-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
         <div class="mx-auto max-w-md">
@@ -6,10 +7,17 @@
                 <img src="../assets/icones/icone_32-bleu.png" class="h-8 mt-1" alt="Tailwind Play" />
                 <h1 class="block text-3xl font-extrabold text-gray-900 ml-4">Billun</h1>
             </div>
-
-            <div class="px-6 py-4">
+            <div style="padding-top:5%;text-align: center;  ">
+              <button  (click)="login()"  style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" *ngIf="!isLoggedIn()">Se connecter avec Outlook</button>
+              <button   (click)="logout()" style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" *ngIf="isLoggedIn()">Deconnecter</button>
+                <div *ngIf="isLoggedIn()" class="vertical-center">
+                  <button style="position:relative;right: 5px;" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="set()">Verifier</button>
+                  <button style="position:relative;left: 5px;" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="reset()">Demarquer</button>
+                </div>
+            </div>
+            <!-- <div class="px-6 py-4">
                 <p class="mt-1 text-center text-gray-400">Signaler une url ou une adresse email.</p>
-
+                
                 <form method="post">
                     <div class="w-full mt-4">
                         <input name="signal" id="signal" [(ngModel)]="signal"
@@ -29,7 +37,7 @@
                       <button class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="reset()">Demarquer</button>
                   </div>
                 </form>
-            </div>
+            </div> -->
 
             <div class="flex items-center justify-center py-4 text-center ">
                 <a href="https://Billun.com" class="mx-2 text-sm font-bold text-blue-400 hover:underline"  target="_blank">A propos</a>
@@ -37,18 +45,5 @@
         </div>
 
     </div>
-
-  <!-- <div>
-    <h1>Micorsoft </h1>
-    <button (click)="login()" *ngIf="!isLoggedIn()">SIGN IN</button>
-    <button (click)="logout()" *ngIf="isLoggedIn()">SIGN OUT</button>
-    <div *ngIf="isLoggedIn()">
-      <h3>You are logged in</h3>
-      <button (click)="set()">SET</button>
-      <button (click)="reset()">RESET</button>
-    </div>
-    <div *ngIf="!isLoggedIn()">
-      <h3>You are NOT logged in</h3>
-    </div>
-  </div> -->
+  
 </div>

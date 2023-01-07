@@ -7,7 +7,9 @@
 #body{
     width: 500px;
 }
-
+.vertical-center{
+  padding:3%;
+}
 *,
 ::before,
 ::after {

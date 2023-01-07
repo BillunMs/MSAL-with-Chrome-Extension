@@ -42,10 +42,11 @@ export class AppComponent implements OnInit {
   async login() {
     //window.open('https://billunms.herokuapp.com/', 'winname', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=350');
 
-    this.authService.loginPopup()
-      .subscribe((response: AuthenticationResult) => {
-        this.authService.instance.setActiveAccount(response.account);        
-      });
+    // this.authService.loginPopup()
+    //   .subscribe((response: AuthenticationResult) => {
+    //     this.authService.instance.setActiveAccount(response.account);        
+    //   });
+    await this.authService.loginRedirect()
   }
   
   async logout() {
