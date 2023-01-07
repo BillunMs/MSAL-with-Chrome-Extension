@@ -16,8 +16,9 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     auth: {
       clientId: 'e986f0aa-665a-44f8-a0c4-32bf87cd31ec',//d6d9e658-99cb-41c4-83c8-8c20974b47a4 //10fded60-16d8-4c7e-aa87-946e96bb69e1
       //redirectUri: 'chrome-extension://dkgendnilbddeonpljnopkmilbanmbfi/index.html'
-      redirectUri:'https://billunms.herokuapp.com/'
+      //redirectUri:'https://billunms.herokuapp.com/'
       //redirectUri:'http://localhost:4200'
+      redirectUri:'https://podaycast.heroku.com/'
     }
   });
 }
