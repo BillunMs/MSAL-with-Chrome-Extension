@@ -7,15 +7,15 @@
                 <img src="../assets/icones/icone_32-bleu.png" class="h-8 mt-1" alt="Tailwind Play" />
                 <h1 class="block text-3xl font-extrabold text-gray-900 ml-4">Billun</h1>
             </div>
-            <div style="padding-top:5%;text-align: center;  ">
+            <!-- <div style="padding-top:5%;text-align: center;  ">
               <button  (click)="login()"  style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" *ngIf="!isLoggedIn()">Se connecter avec Outlook</button>
               <button   (click)="logout()" style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" *ngIf="isLoggedIn()">Deconnecter</button>
                 <div *ngIf="isLoggedIn()" class="vertical-center">
                   <button style="position:relative;right: 5px;" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="set()">Verifier</button>
                   <button style="position:relative;left: 5px;" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="reset()">Demarquer</button>
                 </div>
-            </div>
-            <!-- <div class="px-6 py-4">
+            </div> -->
+            <div class="px-6 py-4">
                 <p class="mt-1 text-center text-gray-400">Signaler une url ou une adresse email.</p>
                 
                 <form method="post">
@@ -29,15 +29,10 @@
                             class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                             Signaler
                         </button>
-                        <button style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="login()" *ngIf="!isLoggedIn()">Se connecter avec Outlook</button>
-                        <button  class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="logout()" *ngIf="isLoggedIn()">Deconnecter</button>
+                        <button style="display:inline-block" class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="openHerokuWindow()">Outlook</button>
                     </div>
-                    <div *ngIf="isLoggedIn()" class="vertical-center">
-                      <button class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="set()">Verifier</button>
-                      <button class="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" (click)="reset()">Demarquer</button>
-                  </div>
                 </form>
-            </div> -->
+            </div>
 
             <div class="flex items-center justify-center py-4 text-center ">
                 <a href="https://Billun.com" class="mx-2 text-sm font-bold text-blue-400 hover:underline"  target="_blank">A propos</a>

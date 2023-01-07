@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   async login() {
-    //window.open('https://billunms.herokuapp.com/', 'winname', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=350');
 
     // this.authService.loginPopup()
     //   .subscribe((response: AuthenticationResult) => {
@@ -67,5 +66,9 @@ export class AppComponent implements OnInit {
       return
     }
     await this.billun.send(this.signal).then(()=>{this.signal=''})
+  }
+
+  openHerokuWindow(){
+    window.open('https://billunms.herokuapp.com/', 'winname', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=250');
   }
 }
