@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     
-    this.authService.instance.handleRedirectPromise().then( res => {
+    await this.authService.instance.handleRedirectPromise().then( res => {
       if (res != null && res.account != null) {
         this.authService.instance.setActiveAccount(res.account)
       }

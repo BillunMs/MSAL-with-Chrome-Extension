@@ -126,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
 function AppComponent_button_16_Template(rf, ctx) { if (rf & 1) {
     const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AppComponent_button_16_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r3.login(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AppComponent_button_16_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r3.loginNotInPopUp(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Se connecter avec Outlook");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
@@ -162,14 +162,21 @@ class AppComponent {
         this.signal = '';
     }
     ngOnInit() {
-        this.authService.instance.handleRedirectPromise().then(res => {
-            if (res != null && res.account != null) {
-                this.authService.instance.setActiveAccount(res.account);
-            }
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.authService.instance.handleRedirectPromise().then(res => {
+                if (res != null && res.account != null) {
+                    this.authService.instance.setActiveAccount(res.account);
+                }
+            });
         });
     }
     isLoggedIn() {
         return this.authService.instance.getActiveAccount() != null;
+    }
+    loginNotInPopUp() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.authService.loginRedirect();
+        });
     }
     login() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -302,7 +309,8 @@ function MSALInstanceFactory() {
         auth: {
             clientId: 'e986f0aa-665a-44f8-a0c4-32bf87cd31ec',
             //redirectUri: 'chrome-extension://dkgendnilbddeonpljnopkmilbanmbfi/index.html'
-            redirectUri: 'https://billunms.herokuapp.com/'
+            //redirectUri:'https://billunms.herokuapp.com/'
+            redirectUri: 'http://localhost:4200'
         }
     });
 }
@@ -313,7 +321,7 @@ function MSALInterceptorConfigFactory() {
     protectedResourceMap.set('https://graph.microsoft.com/beta/me/outlook/masterCategories', ['user.read', 'Mail.ReadWrite', 'MailboxSettings.ReadWrite', 'MailboxSettings.Read']);
     protectedResourceMap.set('http://localhost:8080/hello', ['api://d16e1a06-3be2-4ae1-8bd4-718c19cecac3/hello']);
     return {
-        interactionType: _azure_msal_browser__WEBPACK_IMPORTED_MODULE_3__["InteractionType"].Popup,
+        interactionType: _azure_msal_browser__WEBPACK_IMPORTED_MODULE_3__["InteractionType"].Redirect,
         protectedResourceMap
     };
 }
