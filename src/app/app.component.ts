@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.authService.instance.handleRedirectPromise().then( res => {
       if (res != null && res.account != null) {
         this.authService.instance.setActiveAccount(res.account)
@@ -33,6 +34,10 @@ export class AppComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return this.authService.instance.getActiveAccount() != null
+  }
+
+  async loginNotInPopUp(){
+    this.authService.loginRedirect()
   }
 
   async login() {
